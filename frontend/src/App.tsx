@@ -1,5 +1,7 @@
-"use client"; 
 
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 import { useEffect, useState } from "react";
 import {
   AppConfig,
@@ -7,12 +9,11 @@ import {
   showConnect,
   openContractCall,
 } from "@stacks/connect";
-import { StacksTestnet } from "@stacks/network";
-// import { STACKS_MOCKNET } from "@stacks/network";
-
+import { StacksMocknet } from "@stacks/network";
 import { stringUtf8CV } from "@stacks/transactions";
 
-export default function Home() {
+function App() {
+  const [count, setCount] = useState(0)
   const [message, setMessage] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [currentMessage, setCurrentMessage] = useState("");
@@ -52,7 +53,7 @@ export default function Home() {
   const submitMessage = async (e) => {
     e.preventDefault();
 
-    const network = new StacksTestnet();
+    const network = new StacksMocknet();
 
     const options = {
       contractAddress: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
@@ -122,5 +123,9 @@ export default function Home() {
         ""
       )}
     </div>
-  );
+  )
+    
+  
 }
+
+export default App
